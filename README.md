@@ -33,8 +33,8 @@ Welcome to **Medical Chat Bot**, a conversational AI application designed to pro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/medical-chat-bot-v2.git
-   cd medical-chat-bot-v2
+   git clone https://github.com/DhananjayPorwal/medical-chatbot-llama2.git
+   cd medical-chatbot-llama2
    ```
 
 2. Install dependencies:
