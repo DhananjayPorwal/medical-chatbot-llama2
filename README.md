@@ -1,84 +1,115 @@
-# Llama2 Medical Bot
+# Medical Chat Bot 🚑🤖
 
-The Llama2 Medical Bot is a powerful tool designed to provide medical information by answering user queries using state-of-the-art language models and vector stores. This README will guide you through the setup and usage of the Llama2 Medical Bot.
-
-## Table of Contents
-
-- [Introduction](#langchain-medical-bot)
-- [Table of Contents](#table-of-contents)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Prerequisites
-
-Before you can start using the Llama2 Medical Bot, make sure you have the following prerequisites installed on your system:
-
-- Python 3.6 or higher
-- Required Python packages (you can install them using pip):
-    - langchain
-    - chainlit
-    - sentence-transformers
-    - faiss
-    - PyPDF2 (for PDF document loading)
-
-## Installation
-
-1. Clone this repository to your local machine.
-
-    ```bash
-    git clone https://github.com/your-username/langchain-medical-bot.git
-    cd langchain-medical-bot
-    ```
-
-2. Create a Python virtual environment (optional but recommended):
-
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-    ```
-
-3. Install the required Python packages:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Download the required language models and data. Please refer to the Langchain documentation for specific instructions on how to download and set up the language model and vector store.
-
-5. Set up the necessary paths and configurations in your project, including the `DB_FAISS_PATH` variable and other configurations as per your needs.
-
-## Getting Started
-
-To get started with the Llama2 Medical Bot, you need to:
-
-1. Set up your environment and install the required packages as described in the Installation section.
-
-2. Configure your project by updating the `DB_FAISS_PATH` variable and any other custom configurations in the code.
-
-3. Prepare the language model and data as per the Langchain documentation.
-
-4. Start the bot by running the provided Python script or integrating it into your application.
-
-## Usage
-
-The Llama2 Medical Bot can be used for answering medical-related queries. To use the bot, you can follow these steps:
-
-1. Start the bot by running your application or using the provided Python script.
-
-2. Send a medical-related query to the bot.
-
-3. The bot will provide a response based on the information available in its database.
-
-4. If sources are found, they will be provided alongside the answer.
-
-5. The bot can be customized to return specific information based on the query and context provided.
+Welcome to **Medical Chat Bot**, a conversational AI application designed to provide accurate and professional medical information. This chatbot leverages advanced language models and retrieval-based QA systems to deliver precise answers to user queries. 
 
 ---
 
-For more information on how to use, configure, and extend the Llama2 Medical Bot, please refer to the Langchain documentation or contact the project maintainers.
+## Features ✨
 
-Happy coding with Llama2 Medical Bot! 🚀
+- **Accurate Medical Responses**: Uses professional medical terminology to ensure reliable answers.
+- **Customizable Prompt Template**: Tailored to provide concise and context-aware responses.
+- **Retrieval-Based QA**: Integrates with FAISS vector store for efficient document retrieval.
+- **Streamed Responses**: Provides real-time, streamed answers for a seamless user experience.
+
+---
+
+## How It Works 🛠️
+
+1. **Custom Prompt Template**: A predefined prompt ensures the chatbot provides accurate and professional responses.
+2. **LLM Integration**: Powered by the `llama-2-7b-chat` model for natural language understanding.
+3. **Vector Store**: Uses FAISS for efficient document retrieval, enabling context-aware answers.
+4. **Chainlit Framework**: Built on Chainlit to handle chat interactions and manage user sessions.
+
+---
+
+## Setup Instructions 🚀
+
+### Prerequisites
+
+- Python 3.10 or higher
+- Required Python libraries (see `requirements.txt`)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/medical-chat-bot-v2.git
+   cd medical-chat-bot-v2
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Download the LLM model:
+   - Place the `llama-2-7b-chat.ggmlv3.q8_0.bin` model file in the appropriate directory.
+
+4. Set up the FAISS vector store:
+   - Ensure the FAISS database is located at `vectorstores/db_faiss`.
+
+---
+
+## Usage 🩺
+
+1. Start the chatbot:
+
+```bash
+chainlit run model.py
+```
+
+2. Open the chatbot in your browser (default: `http://localhost:8000`).
+
+3. Interact with the chatbot by asking medical-related questions.
+
+---
+
+## Configuration ⚙️
+
+### Custom Prompt Template
+
+The chatbot uses a custom prompt template defined in the `model.py` file:
+
+```python
+custom_prompt_template = """Use the following pieces of information to answer the user's question.
+
+- If the answer is not clear or if the information is insufficient, simply say: "I don't know" and do not make up an answer.
+- Always use professional, accurate medical terminology when necessary.
+- Provide only the direct answer to the user's question. Do not include any additional information or explanations unless explicitly requested.
+
+Context: {context}
+Question: {question}
+Answer:
+"""
+```
+
+You can modify this template to suit your specific requirements.
+
+### Chainlit Configuration
+
+The chatbot's UI and behavior can be customized via the `config.toml` file located in the `.chainlit` directory. For example:
+
+- **Assistant Name**: Change the assistant's name in the `[UI]` section.
+- **Themes**: Set the default theme (light/dark/system).
+- **Custom CSS/JS**: Add custom styles or scripts for the UI.
+
+---
+
+## Contributing 🤝
+
+We welcome contributions to improve the chatbot! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request with a detailed description of your changes.
+
+---
+
+## Useful Links 🔗
+
+- **Chainlit Documentation**: [docs.chainlit.io](https://docs.chainlit.io)
+- **Join the Community**: [Chainlit Discord](https://discord.gg/k73SQ3FyUh)
+
+---
+
+Thank you for using Medical Chat Bot. If you have any questions or feedback, feel free to reach out. 😊 
